@@ -1,0 +1,8 @@
+{ out 10 }
+  
+  
+start()
+	init i := 1
+	i--!
+	i!!
+end

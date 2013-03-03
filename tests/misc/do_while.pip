@@ -1,0 +1,13 @@
+{ out 1005 }
+
+start()
+    init foo := [5]
+
+    while( foo < 5 ) do
+        foo := foo + 1
+    else
+        100!
+    done
+    
+    foo!
+end

@@ -1,0 +1,23 @@
+{ in 2 
+4.0 }
+{ out 24 }
+
+f()
+  f?
+end
+real g()
+  g?
+end
+
+start()
+  var i
+  var real r
+  #'Introduza o inteiro: '!
+  i := f()
+  #'Lido: '!
+  i!
+  #'Introduza o real: '!
+  r := g()
+  #'Lido: '!
+  r!!
+end

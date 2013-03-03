@@ -1,0 +1,18 @@
+{ out a12.4a12.4 }
+  
+  
+start()
+	if 1 then
+		const s,i,r := 'a', 1 , 2.4
+		s!
+		i!
+		r!
+	endif
+	if 0 then 0 else
+		const s,i,r := 'a', 1 , 2.4
+		s!
+		i!
+		r!
+	endif
+	''!
+end

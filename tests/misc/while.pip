@@ -1,0 +1,11 @@
+{ out 5 }
+
+start()
+    init foo := [0]
+
+    while( foo < 5 ) do
+        foo := foo + 1
+    done
+ 
+    foo!!
+end

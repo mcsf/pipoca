@@ -1,0 +1,6 @@
+{ out 10 }
+  
+start()
+	{comment}1!
+	0!!
+end

@@ -1,0 +1,17 @@
+{ out 4321 }
+
+start()
+ while 1 do
+  while 1 do   
+   while 1 do
+    4!
+    break 1
+   done
+   3!
+   break 1
+  done
+  2!
+  break 1
+ done
+ 1!!
+end

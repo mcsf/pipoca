@@ -1,0 +1,11 @@
+{ out a12.4 }
+  
+  
+start()
+	init s := 'a'
+	init i :=  1
+	init r := 2.4 
+	s!
+	i!
+	r!!
+end

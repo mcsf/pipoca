@@ -1,0 +1,27 @@
+{ out correctoerrado }
+
+init dia := 4
+init mes := 5
+init ano := 2010
+
+verifica_dia()
+
+start()
+	verifica_dia()
+	dia := 40
+	verifica_dia()
+end
+
+verifica_dia()
+	if ano > 2006 and ano <= 2010 and dia >= 1 \
+	and (mes = 1 or mes = 3 or mes = 5 or mes = 7 \
+	or mes = 8 or mes = 10 or mes = 12 and dia <= 31) \
+	or (mes = 4 or mes = 6 or mes = 9 or mes = 11 and dia <= 30) \
+	or (mes = 8 or mes = 10 or mes = 12 and dia <= 31) \
+	or mes = 2 and (ano = 2008 and dia <= 29 or ano <> 2008 \
+	and dia <= 28 ) then
+		'correcto' !
+	else
+		'errado' !
+	endif
+end

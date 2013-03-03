@@ -1,0 +1,10 @@
+
+start()
+	var x,y
+	y := (x := 3 ) + 5
+
+	'should be 3: '!
+	x!!
+	'should be 8: '!
+	y!!
+end

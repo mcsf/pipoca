@@ -1,0 +1,15 @@
+{in 10
+2 }
+{out 0246810 }
+
+start()
+    init n := [0]
+    init y := [0]
+    init x := [0]
+    y?
+    n?
+    while (x <= y) do
+      x!
+      x := x + n
+    done
+end

@@ -1,0 +1,9 @@
+{ out 2.5 }
+  
+real g()
+	g:= 2.5
+end
+  
+start()
+	g()!!
+end

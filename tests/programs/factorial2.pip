@@ -1,0 +1,20 @@
+{ out 120}
+
+# Factorial iterativo (sem função)
+start()
+	var f, n, i
+	if argc() = 2 then
+		var g
+		n := atoi(argv(1))
+	else
+		n := 5
+	endif
+	f := i := n
+	while i > 2 do
+		i := i - 1
+		f := f * i
+	done
+	#n + '! = ' + f !!
+	f !!
+	start := 0
+end

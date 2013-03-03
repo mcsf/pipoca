@@ -1,0 +1,48 @@
+
+_pip_rts_memcopy_()
+	54
+end
+
+_main()
+	43
+end
+
+
+func2()
+	
+	222
+	func2()
+end
+
+func3()
+	45
+end
+
+_start()
+	23
+end
+
+
+_pip_rts_power_()
+	54454
+end
+
+
+func1()
+	34
+	func2()
+	func3()
+end
+
+
+
+start()
+	34
+	func1()
+end
+
+
+main()
+	546
+end
+

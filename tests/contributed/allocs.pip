@@ -1,0 +1,77 @@
+start()
+  var real realp[]
+  var integer intp[]
+  init i := [0]
+  init it := [0]
+  
+  [ realp ] := 20
+  
+  while not(it = 2) do
+    realp[i+0] := i+3
+    realp[i+1] := i+55
+    realp[i+2] := i+6
+    realp[i+3] := i+4
+    realp[i+4] := i+3
+    realp[i+5] := i+5
+    realp[i+6] := i+6
+    realp[i+7] := i+27
+    realp[i+8] := i+7
+    realp[i+9] := i+6
+    it ++
+    i := i + 10
+  done
+  
+  [intp] := 10
+  
+  i := -1
+  while ++i < 10 do (intp[i] := realp[i])!! done
+  #' '!!
+  i := -1
+  while ++i < 10 do intp[i]!! done
+  #' '!!
+  i := -1
+  while ++i < 20 do realp[i]!! done
+end
+
+{ out
+3
+55
+6
+4
+3
+5
+6
+27
+7
+6
+3
+55
+6
+4
+3
+5
+6
+27
+7
+6
+3
+5.5E1
+6
+4
+3
+5
+6
+2.7E1
+7
+6
+1.3E1
+6.5E1
+1.6E1
+1.4E1
+1.3E1
+1.5E1
+1.6E1
+3.7E1
+1.7E1
+1.6E1
+}

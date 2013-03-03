@@ -1,0 +1,21 @@
+{ out 4210 }
+
+start()
+	while 1 do
+	 while 1 do   
+	  while 1 do      
+	   while 1 do			
+		4!
+		break 2			
+	   done
+	   3!
+	   break
+	  done
+	  2!
+	  break
+	 done
+	 1!
+	 break
+	done
+	0!
+end

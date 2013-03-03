@@ -1,0 +1,124 @@
+# teste de conversao de tipos em exprs de comparação (int<->double)
+
+start()
+	
+	'\nPrimeira serie, positivos:'!!
+
+	if  36787.465776 < 243565 then 'Ok 01'!! endif
+
+	if  3675687.465776 > 243565 then 'Ok 02'!! endif
+	
+	if  36787.000 <= 36787	then 'Ok 03'!! endif
+
+	if  36787.000 >= 36787	then 'Ok 04'!! endif
+
+	if  36787.000 = 36787	then 'Ok 05'!! endif
+
+	if  00.000 >= 0			then 'Ok 06'!! endif
+
+	if  00.000 = 0			then 'Ok 07'!! endif
+
+	if  00.001 >= 0			then 'Ok 08'!! endif
+
+	if  00.001 > 0			then 'Ok 09'!! endif
+
+	if  00.01 < 1			then 'Ok 10'!! endif
+
+	if  00.9991 < 1			then 'Ok 11'!! endif
+
+	if  01.9991 > 1			then 'Ok 12'!! endif
+
+	if  00.9991 >= 1		then 'WWROONG'!! endif
+
+	'\nSegunda serie, negativos:'!!
+
+	if  -36787.465776 < 243565 then 'Ok 01'!! endif
+	if  36787.465776 < -243565 then 'WRONG1'!! endif
+
+	if  3675687.465776 > -243565 then 'Ok 02'!! endif
+	if  -3675687.465776 > 243565 then 'WRONG2'!! endif
+	
+	if  -36787.000 <= 36787		then 'Ok 03'!! endif
+	if  -36787.000 <= -36787	then 'Ok 04'!! endif
+
+	if  -36787.000 >= -36787	then 'OK 05'!! endif
+	if  -36787.000 >= 36787	then 'WRONG4'!! endif
+	if  36787.000 >= -36787	then 'Ok 06'!! endif
+
+	if  36787.000 = -36787	then 'WRONG5'!! endif
+	if  -36787.000 = -36787	then 'Ok 07'!! endif
+	if  -36787.000 = -36787	then 'Ok 08'!! endif
+
+	if  -00.000 >= 0		then 'Ok 09'!! endif
+	if  00.000 >= -0		then 'Ok 10'!! endif
+	if  -00.000 >= -0		then 'Ok 11'!! endif
+
+	if  -00.000 = 0			then 'Ok 12'!! endif
+	if  00.000 = -0			then 'Ok 13'!! endif
+	if  -00.000 = -0		then 'Ok 14'!! endif
+
+
+	if  -0 = 0				then 'Ok 15'!! endif
+	if  54 >= -54			then 'Ok 16'!! endif
+	if  00.001 >= -0		then 'Ok 17'!! endif
+	if  -00.001 < -0		then 'Ok 18'!! endif
+
+	if  -00.001 > -0		then 'WRONG6'!! endif
+	if  -00.001 = -0		then 'WRONG7'!! endif
+	if  -00.001 >= 0		then 'WRONG8'!! endif
+	if  00.01 < -1			then 'WRONG9'!! endif
+
+	if  -00.01 < 1			then 'Ok 19'!! endif
+	if  -00.01 > -1			then 'Ok 20'!! endif
+
+	if  -00.9991 > -1		then 'Ok 21'!! endif
+	if  -00.9991 < 1		then 'Ok 22'!! endif
+	if  00.9991 > -1		then 'Ok 23'!! endif
+
+	if  01.9991 > -1		then 'Ok 24'!! endif
+	if  -01.9991 < 1		then 'Ok 25'!! endif
+
+end
+
+{ out 
+Primeira serie, positivos:
+Ok 01
+Ok 02
+Ok 03
+Ok 04
+Ok 05
+Ok 06
+Ok 07
+Ok 08
+Ok 09
+Ok 10
+Ok 11
+Ok 12
+
+Segunda serie, negativos:
+Ok 01
+Ok 02
+Ok 03
+Ok 04
+OK 05
+Ok 06
+Ok 07
+Ok 08
+Ok 09
+Ok 10
+Ok 11
+Ok 12
+Ok 13
+Ok 14
+Ok 15
+Ok 16
+Ok 17
+Ok 18
+Ok 19
+Ok 20
+Ok 21
+Ok 22
+Ok 23
+Ok 24
+Ok 25
+}

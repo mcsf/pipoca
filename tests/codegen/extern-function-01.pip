@@ -1,0 +1,18 @@
+{ out 12 }
+
+printi(i) 
+
+g()
+
+start()
+  g()
+end
+
+g()
+  argc()!
+  printi(2)
+end
+ 
+printi(i) 
+	i!!
+end

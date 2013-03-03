@@ -1,0 +1,37 @@
+{ out [2, 3, 4, 5, 5, 6, 6, 7, 34, 34, 45, 45, 56, 56, 76, 76, 433, ] }
+
+start()
+  init vect := [5, 3, 7, 6, 45, 34, 56, 433, 45, 34, 5, 6, 76, 4, 56, 76, 2]  # at -72
+  
+  init min_index := [0]   # at -76
+  init max_index := [16]  # at -80
+  
+  var i1, i2  # at 84, 88
+  i1 := min_index
+  while i1 <= max_index do
+    #'it1'!!
+    i2 := min_index
+    while i2 < max_index do
+      #'it2'!!
+      if vect[i2] > vect [i2+1] then
+
+        var tmp                           # at 92
+        #'swapping...'!!
+        tmp := vect[i2]
+        vect [i2] := vect[i2+1]
+        vect[i2+1] := tmp
+      endif
+      ++i2
+    done
+    ++i1
+  done
+  
+  i1 := min_index
+  '['!
+  while i1 <= max_index do
+    vect[i1]!
+	', '!
+    i1++
+  done
+  ']'!!
+end

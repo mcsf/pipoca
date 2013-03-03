@@ -1,0 +1,240 @@
+
+
+
+
+
+
+Instituto Superior Técnico                          62462 Miguel Fonseca
+Compiladores                                        62510 Marcos Henrich
+Maio 2010                                                      Grupo 063
+
+
+                           Compilador Pipoca
+                         Relatório do Projecto
+
+
+
+   Este  relatório procura explicar o funcionamento do compilador Pipoca
+   descrevendo as grandes entidades  utilizadas  na  sua  componente  de
+   análise semântica.
+
+
+  1. PFwriter .........................................................1
+  2. TypeValidator ....................................................2
+  3. ContextValidator .................................................3
+  4. PFfunction .......................................................3
+  5. PFerror ..........................................................3
+  6. Estruturas de Dados ..............................................4
+     6.1. ExpressionType ..............................................4
+     6.2. Symbol ......................................................4
+     6.3. Function ....................................................4
+
+
+1. PFwriter
+
+   PFwriter  é  a  base  do  compilador. A sua única tarefa é chamar in‐
+   struções Postfix correspondentes aos process de cada um dos nodes  de
+   forma  a que esse produza código assemblável e funcional. No entanto,
+   para tal, o PFwriter depende do trabalho de vários  componentes  adi‐
+   cionais.
+
+   Sendo  a  linguagem  Pipoca uma linguagem com vários tipos, e que uma
+   mesma operação pode ser aplicada entre  vários  tipos,  o  compilador
+   deve ser capaz de ver o tipo de cada operando para que possa realizar
+   eventuais promoções de tipos antes  da  operação  Postfix  correspon‐
+   dente.   Cada  nó que seja um operando (deriva de Expression) tem uma
+   informação adicional sobre o seu tipo (ExpressionType);  essa  infor‐
+   mação  tem  de, de algum modo, ser inicializada correctamente, tarefa
+   essa do TypeValidator.
+
+   Em Pipoca usam‐se funções que devolvem um valor com  um  certo  tipo,
+   recebem  zero ou mais argumentos com, cada um, um determinado tipo, e
+   podem ter no  seu  corpo  variáveis  declaradas  que  são  unicamente
+   acessíveis  no seu contexto. Sendo estes os elementos que compõem uma
+   função, e que cada função pode ser chamada várias vezes antes de ter‐
+
+
+
+Relatório                       Página 1                       Grupo 063
+
+
+
+
+
+                                   ‐2‐
+
+
+   minar, tem‐se de inicializar os valores na pilha com um endereçamento
+   relativo ao início de cada função. Para tal usa‐se  o  frame  pointer
+   como  a  origem da função, e os offsets para navegar entre os valores
+   da função. Um offset superior a  8  corresponde  a  um  argumento,  o
+   primeiro  offset  negativo (‐4 ou ‐8) corresponde ao valor de retorno
+   da função e os restantes negativos às variáveis declaradas na função.
+   Ao  criar uma função, PFwriter faz ENTER(n) onde n é o tamanho do es‐
+   paço a reservar para as variáveis próprias à função. Ao ser feito EN‐
+   TER(n), o valor n tem de já ser conhecido, o que significa que, antes
+   de ser criada uma função no PFwriter, o corpo da função  tem  de  ser
+   percorrido  para que cada uma das variáveis da função tenha o seu es‐
+   paço reservado na pilha, tarefa do ContextValidator.
+
+   Existem vários tipos de funções em Pipoca. Chamadas como Print  (’!’)
+   ou argc() são chamadas a funções externas implícitas. Por outro lado,
+   podem existir funções externas declaradas pelo programador, para além
+   das  internas. PFfunction serve para lidar com todo o tipo de funções
+   da forma mais inteligente.
+
+   PFwriter utiliza ainda uma série de funções que servem para ajudar  o
+   programador, factorizando acções repetitivas no código.
+
+
+2. TypeValidator
+
+   No decorrer do processamento dos nós, PFwriter delega a TypeValidator
+   a verificação dos tipos dos nós que derivam de Expression.  Tal  como
+   PFwriter, TypeValidator é um processador semântico. Trabalha atraves‐
+   sando cada expressão até às suas folhas, que são literais ou  identi‐
+   ficadores  e portanto cujos tipos são sabidos num programa semantica‐
+   mente correcto. Das folhas, sobe‐se a árvore, verificando  que,  para
+   cada  dada expressão, o(s) seu(s) filho(s) tem/têm tipo(s) válido(s).
+   Estão definidas funções auxiliares, como variableValidator, que veri‐
+   fica um uso correcto dos identificadores nos nós declarativos; ou bi‐
+   naryExpressionType,  invocada  pela  maior   parte   das   expressões
+   binárias, que permite especificar que tipos são permitidos nos filhos
+   dos nós e que tipo específico se espera obter. Isto, em particular, é
+   útil para a promoção de tipos a ser realizada posteriormente. Por ex‐
+   emplo, a adição de um inteiro e de um real é do tipo real. O  inteiro
+   terá  de  ser  promovido  a  real  para poder ser feita a operação de
+   adição sobre doubles.
+
+   TypeValidator pode levantar uma série de erros ao processar nós.  Por
+   exemplo,  se  uma  função recebe mais argumentos do que está definido
+   que deve receber, ou se recebe argumentos de tipo  errado.  Paralela‐
+   mente,  nas  atribuições, nas passagens de argumentos em funções, são
+   verificados os tamanhos dos vectores.
+
+
+
+
+Relatório                       Página 2                       Grupo 063
+
+
+
+
+
+                                   ‐3‐
+
+
+3. ContextValidator
+
+   Em Pipoca, como em muitas outras  linguagens,  utilizam‐se  identifi‐
+   cadores  para  referir  funções  e variáveis. Como já foi mencionado,
+   variáveis no interior de funções têm  um  offset  relativo  ao  frame
+   pointer  da  função.  Mas como obter mais tarde novamente o offset de
+   um identificador?  Particularmente, quanto espaço  deve  ser  alocado
+   para  as  variáveis  locais aquando da entrada numa função (instrução
+   Postfix ENTER)? Essa informação tem de ser previamente inicializada e
+   guardada  na tabela de símbolos, SymbolTable, após ter sido calculada
+   em ContextValidator, que é chamado no início do processamento de  uma
+   declaração de função.
+
+   ContextValidator  tem dois modos. No primeiro (_countMode), limita‐se
+   a contar os offsets; no segundo, conta‐os  e  põe‐nos  na  tabela  de
+   símbolos, incrementando de cada vez o offset actual. Na verdade, Con‐
+   textValidator é o único visitor que escreve em SymbolTable. Por  essa
+   razão,  em  cada declaração de variável (const, var, init), é chamado
+   para inserir na tabela de símbolos o símbolo  correspondente.  Com  a
+   tabela  de  símbolos actualizada, facilmente se sabe o espaço ocupado
+   por cada uma das variáveis.
+
+
+4. PFfunction
+
+   PFfunction tem como propósito manter registo das  funções  utilizadas
+   num  programa Pipoca. Toma em conta, separadamente, as funções exter‐
+   nas, as internas, e quais destas são chamadas no programa. Em partic‐
+   ular, serve para definir funções standard da linguagem Pipoca, como a
+   potência, ou a cópia de strings, usada na  concatenação  das  mesmas;
+   saber  se estas funções são utilizadas num programa permite ao compi‐
+   lador incluí‐las no produto apenas nesse caso, evitando assim que re‐
+   cursos  inutilizados  sejam  carregados no programa. Serve ainda para
+   dar a conhecer ao compilador as funções da librts, que argumentos es‐
+   peram  e  quais  os  seus  tipos de retorno, para que possam ser uti‐
+   lizadas em operações como e.g.  a de impressão.
+
+   Por fim, PFfunction é utilizado no processamento  de  declarações  de
+   funções  para  lidar automaticamente com declarações externas: é adi‐
+   cionada a um registo de funções externas a função com o seu nome, seu
+   tipo,  e seus argumentos, e é ainda adicionado o símbolo que lhe cor‐
+   responde. Essa função cuja declaração é processada  pode  vir  a  ser
+   definida posteriormente; em caso contrário, é tomada como externa.
+
+
+5. PFerror
+
+   Muitas excepções são geradas nas várias classes da semântica. De for‐
+
+
+
+Relatório                       Página 3                       Grupo 063
+
+
+
+
+
+                                   ‐4‐
+
+
+   ma a que sejam todas tratadas de igual modo, utilizam todas a  classe
+   PFerror.  PFerror deriva de std::exception e pode ser instanciada sem
+   argumentos ou com um ponteiro para um nó. Esta instância age de certa
+   forma  à  semelhança  de  um canal de output, na medida em que define
+   acções para o operador <<, que recebe strings e inteiros. Este  oper‐
+   ador  concatena mensagens de erro numa única e devolve uma referência
+   para a instância.  Assim, é possível ter aninhamentos de  construções
+   "try/catch/throw PFerror" com os quais PFerror acumula detalhes sobre
+   eventuais erros antes de os mostrar.
+
+
+6. Estruturas de Dados
+
+   6.1. ExpressionType
+
+      ExpressionType foi rescrita para funcionar à  volta  de  uma  enu‐
+      meração  de  tipos que permite dar uso a máscaras de bits. Uma ex‐
+      pressão pode assim ter vários tipos em simultâneo, como ser um re‐
+      al  e  uma  constante,  um vector e inteiro, etc. Cada tipo de ex‐
+      pressão conta ainda com um comprimento correspondente  à  sua  di‐
+      mensão (1 para escalares), e o tamanho de cada elemento que compõe
+      o tipo. Existem métodos  para  obter  uma  descrição  do  tipo  em
+      string,  o  seu  tamanho total, os seus atributos adicionais (con‐
+      stante, ponteiro, etc.). As expressões têm por omissão um tipo di‐
+      to  de  erro. A flexibilidade das máscaras de bits permite verifi‐
+      cações simples de tipos complexos.
+
+
+   6.2. Symbol
+
+      Symbol foi rescrita para ter vários construtores. Um,  que  recebe
+      mais  informação  (offset,  nome,  etc.),  é  usado para construir
+      variáveis, outro recebe funções, e outro  argumentos  destas.  Com
+      esta  distinção é possível verificar imediatamente se um símbolo é
+      uma função ou um argumento.  Assim, cada símbolo tem um  tipo,  um
+      nome, pode ter uma função associada, e um offset. O offset de cada
+      símbolo indica se este é global (se for nulo) ou local.
+
+
+   6.3. Function
+
+      Antes de chamar uma função, PFwriter põe na pilha os seus argumen‐
+      tos  e  faz CALL(functionID); no final, tem de apagar o espaço que
+      os argumentos ocupam na pilha. Essa informação está num símbolo da
+      tabela,  que tem um membro Function que, para uma função, guarda o
+      seu nome, seu tipo e um vector dos seus argumentos, instâncias  de
+      Argument. Esta última é uma subclasse de Function que tem um tipo,
+      um nome e um offset.
+
+
+
+Relatório                       Página 4                       Grupo 063
+
+

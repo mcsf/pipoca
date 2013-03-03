@@ -1,0 +1,12 @@
+{ out 31 }
+
+start()
+	while 1 do
+		while 1 do
+			3 !
+			break 2
+		done
+		2 !!
+	done
+	1 !!
+end

@@ -1,0 +1,19 @@
+{ out a12.4a12.4 }
+  
+  
+start()
+	while 1 do
+		const s,i,r := 'a', 1 , 2.4
+		s!
+		i!
+		r!
+		break
+	done
+	while 0 do 0 else
+		const s,i,r := 'a', 1 , 2.4
+		s!
+		i!
+		r!
+	done
+	''!
+end

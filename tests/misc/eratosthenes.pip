@@ -1,0 +1,35 @@
+{Crivo de Eratosthenes
+Thanks to fnds (o Fábio é rei de algumas coisas)}
+
+eratosthenes()
+    init lim := [20]
+    var vals[], i, j
+    [vals] := lim
+    i := [2]
+    while i < lim do
+        vals[i] := 1
+        i++
+    done
+    i := [2]
+    while i < lim do
+        if vals[i] = 1 then
+            j := i*i
+            while j < lim do
+                vals[j] := 0
+                j := j + i
+            done
+        endif
+        i++
+    done
+    i := [2]
+    while i < lim do
+        if vals[i] = 1 then
+            i !!
+        endif
+        i++
+    done
+end
+
+start()
+    eratosthenes()
+end

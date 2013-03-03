@@ -1,0 +1,9 @@
+{out 0123456789}
+
+start()
+	init x := [0]
+	while (x < 10) do 
+	  x!
+	  x := x + 1
+	done
+end

@@ -1,0 +1,9 @@
+{ out abc }
+  
+string g()
+	g:= 'abc'
+end
+  
+start()
+	g()!!
+end

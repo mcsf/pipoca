@@ -1,0 +1,10 @@
+{ out 1 }
+
+var p[],v
+
+start()
+	[ p ] := 4
+	v := 1
+	p := @v
+	p[0]!
+end

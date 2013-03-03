@@ -1,0 +1,9 @@
+{ out 1 }
+	
+	{
+	comment
+		}
+  
+start()
+	1!!
+end

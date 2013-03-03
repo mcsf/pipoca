@@ -1,0 +1,11 @@
+{ out a12.5 }
+  
+g(string s, i, real r )
+	s!
+	i!
+	r!
+end
+  
+start()
+	g('a',1,2.5)
+end

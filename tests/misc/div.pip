@@ -1,0 +1,30 @@
+{ in 6 }
+{ out 2 3 }
+
+start()	# imprime os divisores de um número
+  init n := [0]
+  init d := [0]
+  #'Cálculo dos divisores de um número.'!!
+  #'Introduza o número: '!!
+  n?
+  if (n > 0) then 
+    init i := [2]
+    
+    while (i <= n/2) do 
+    
+      if (n % i = 0) then
+		i!	# "n" é divisível por "i"
+		' '!
+		d := d + 1
+	  endif
+    
+      i := i + 1
+    
+    done
+    
+    if (d = 0) then
+      'é primo'!!	# "n" é primo
+    endif
+    
+  endif
+end

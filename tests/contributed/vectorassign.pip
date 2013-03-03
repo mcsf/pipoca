@@ -1,0 +1,52 @@
+
+start()
+
+	var aa[3]
+	var bb[3]
+	var cc[3]
+	var real raa[3]
+	var real rbb[3]
+	var real rcc[3]
+
+	cc := bb := aa := [77,88,99]
+	
+	aa[0]!
+	' = '!
+	bb[0]!
+	' = '!
+	cc[0]!!
+
+	aa[1]!
+	' = '!
+	bb[1]!
+	' = '!
+	cc[1]!!
+
+	aa[2]!
+	' = '!
+	bb[2]!
+	' = '!
+	cc[2]!!
+
+	rcc := rbb := raa := [77.34,88.04,99.12]
+	
+	raa[0]!
+	' = '!
+	rbb[0]!
+	' = '!
+	rcc[0]!!
+
+	raa[1]!
+	' = '!
+	rbb[1]!
+	' = '!
+	rcc[1]!!
+
+	raa[2]!
+	' = '!
+	rbb[2]!
+	' = '!
+	rcc[2]!!
+
+end
+

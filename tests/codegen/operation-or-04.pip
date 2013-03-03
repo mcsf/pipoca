@@ -1,0 +1,9 @@
+{ out 0}
+
+start()
+	if 0 or 0 then
+		1!
+	else
+		0!
+	endif
+end

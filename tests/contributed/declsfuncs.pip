@@ -1,0 +1,51 @@
+
+extern string func2(real aa[])
+extern string func2(real aa[])
+
+func1(integer aa)
+func1(integer aa)
+func1(integer aa)
+
+extern string func2(real aa[])
+
+start()
+	'this should compile and etc~~~'!!
+	'run 1: '!
+	func1(34)
+
+end
+
+func1(integer aa[1])
+
+###############################
+# theses should not compile!  #
+###############################
+# func1(integer aa[])
+# extern func1(integer aa)
+# string func2(real aa[])
+# extern func2(real aa[])
+# extern string func2(real aa[1])
+# extern string func2(integer aa[])
+{
+string func2(real aa[])
+	45
+end
+}
+###############################
+
+
+func1(integer aa)
+
+extern string func2(real aa[])
+
+func1(integer qqq)
+	'i am func1 with arg '!
+	qqq!!
+end
+
+# should not compile!
+{
+string func2(real aa[])
+	45
+end
+}

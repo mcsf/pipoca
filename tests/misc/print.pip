@@ -1,0 +1,7 @@
+{ out foo2.2 }
+
+start()
+    init foo := 'foo'
+    foo !
+    2.2 !
+end

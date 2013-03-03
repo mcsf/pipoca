@@ -1,0 +1,8 @@
+{ out 1 }
+
+#comment
+	#comment
+ 
+start()
+	1!
+end

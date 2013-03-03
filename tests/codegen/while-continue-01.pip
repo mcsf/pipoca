@@ -1,0 +1,15 @@
+{ out 86420 }
+
+start()
+ var x
+ x := 10
+
+ while x-1 do
+  x := x-1
+  if x % 2 then
+   continue
+  endif
+  x !
+ done
+ 0 !!
+end

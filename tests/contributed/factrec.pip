@@ -1,0 +1,23 @@
+#Factorial recursivo (com função)
+integer argc()
+string argv(integer i)
+integer atoi(string s)
+factorial(n)
+	if n > 1 then
+		factorial := n * factorial(n-1)
+	else
+		factorial := n
+	endif
+end
+
+init f := [5]
+
+start ()
+	if argc() > 1 then
+		f := atoi(argv(1))
+	endif
+	f!
+	'! = '!
+	factorial(f) !!
+	start := 0
+end

@@ -1,0 +1,9 @@
+{ out a12.4 }
+  
+const s,i,r := 'a', 1 , 2.4
+  
+start()
+	s!
+	i!
+	r!!
+end

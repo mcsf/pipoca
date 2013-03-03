@@ -1,0 +1,20 @@
+{ out 2 }
+
+printi() 
+
+g()
+
+start()
+  g()
+end
+
+
+
+g()
+  printi()
+end
+ 
+
+printi() 
+	2!!
+end

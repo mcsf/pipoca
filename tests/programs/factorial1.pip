@@ -1,0 +1,22 @@
+{ out 120}
+
+# Factorial recursivo (com função)
+
+factorial(n)
+	if n > 1 then
+		factorial := n * factorial(n-1)
+	else
+		factorial := n
+	endif
+end
+
+init f := [ 5 ]
+
+start()
+	if argc() = 2 then
+		f := atoi(argv(1))
+	endif
+	#f + '! = ' + factorial(f) !!
+	factorial(f) !!
+	start := 0
+end

@@ -1,0 +1,14 @@
+start()
+  init x := [0]
+  x?
+  x:=x+12
+  x!!
+end
+
+{in
+9
+}
+
+{out
+21
+}

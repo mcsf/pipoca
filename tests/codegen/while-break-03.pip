@@ -1,0 +1,20 @@
+{ out 10 }
+
+start()
+	while 1 do
+	 while 1 do   
+	  while 1 do      
+	   while 1 do			
+		1!
+		break 4			
+	   done
+	   3!
+	   break
+	  done
+	  2!
+	  break
+	 done
+	 break
+	done	
+	0!!
+end

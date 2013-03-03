@@ -1,0 +1,12 @@
+{ out 0 }
+{ Exemplo simples }
+
+start()
+    const foo := 2
+    
+    if( foo = 4 ) then
+        foo !!
+    else
+        foo-2 !!
+    endif
+end

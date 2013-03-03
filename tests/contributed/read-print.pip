@@ -1,0 +1,12 @@
+init i := [ 0 ]
+init r := [ 0.0 ]
+start()
+  'Introduza o inteiro: '!
+  i?
+  'Lido: '!
+  i!!
+  'Introduza o real: '!
+  r?
+  'Lido: '!
+  r!!
+end

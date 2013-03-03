@@ -1,0 +1,14 @@
+{ out 2 }
+
+var p[]
+var v
+
+ptr(p[])
+	p[0]!
+end
+
+start()
+	[ p ] := 4
+	v := 2
+	ptr(@v)
+end

@@ -1,0 +1,27 @@
+{ out 5 10 300 }
+
+start()
+    init foo := [0]
+    
+    do
+        foo := foo + 1
+    until (foo = 5) else
+        100!!
+    done
+     
+    foo!
+    ' '!
+    
+    do
+        foo := foo + 1
+    until (foo = 10) done
+    
+    foo!
+    ' '!
+    
+    do
+        foo := foo + 1
+    until (foo >= 10) else
+        300!
+    done
+end

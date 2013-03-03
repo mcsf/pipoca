@@ -1,0 +1,10 @@
+{ out 1 }
+
+
+start()
+		{comment}
+		#comment
+{comment}
+#comment
+	1!!
+end

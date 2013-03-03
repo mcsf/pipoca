@@ -1,0 +1,18 @@
+{ out 155 == 155 }
+
+start()
+    init foo := [0]
+
+    while( foo <> 155 ) do
+            while( foo < 100 ) do
+                 foo := foo + 5
+#                 foo !!
+            done
+            foo := foo + 1
+ #           foo !!
+            continue
+    done
+
+    '155 == '!
+    foo!!
+end

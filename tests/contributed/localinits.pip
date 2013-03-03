@@ -1,0 +1,11 @@
+start()
+	init i := [0]
+
+	while i < 10 do
+		init f := [77]
+		f := f+4
+		f!!
+		i++
+	done
+
+end

@@ -1,0 +1,15 @@
+{ out 15161718192021222324 }
+
+start()
+    init x := [0]
+
+    while (x < 25) do
+      if (x % 2 = 0) then
+        while (x < 15) do
+          x := x + 1
+        done
+      endif      
+      x!  
+      x := x + 1
+    done
+end

@@ -1,0 +1,24 @@
+#Factorial iterativo (sem função)
+integer argc()
+string argv(integer i)
+integer atoi(string s)
+
+start ()
+	var f, n, i
+	if argc() > 1 then
+		n := atoi(argv(1))
+	else
+		n := 5
+	endif
+
+	f := i := n
+	while i > 2 do
+		i := i -1
+		f := f *i
+	done
+#	n + '! = ' + f !!
+	n!
+	'! = '!
+	f!!
+	start := 0
+end

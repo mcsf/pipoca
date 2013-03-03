@@ -1,0 +1,14 @@
+{ out 1 }
+
+main()
+	1!!
+end
+
+_main()
+	main()
+end
+
+start()
+  _main()
+end
+

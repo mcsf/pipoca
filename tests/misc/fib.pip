@@ -1,0 +1,22 @@
+{ in 5 }
+{ out 5 }
+
+fibonacci(n)
+ if n = 0 or n = 1 then
+  fibonacci := n
+ else
+  fibonacci := fibonacci(n-1) + fibonacci(n-2)
+ endif
+end
+
+start()
+ var n
+ #'Introduza um número inteiro positivo:'!
+ if n? < 0 then
+  start := 1
+ else
+        fibonacci(n) !!
+  #'Fibonacci(’+n+’) = '+fibonacci(n) !!
+ endif
+ start := 0
+end

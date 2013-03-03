@@ -1,0 +1,56 @@
+{ in 3
+4
+5 }
+{ out Triangulo escaleno }
+
+start()	# classificador de triangulos
+
+  init a := [0]		# criar as variaveis
+  init b := [0]
+  init c := [0]
+
+  #'introduza as dimensoes do primeiro lado do triangulo: '!!
+  a?		# introduzir as dimensoes da 3 faces do triangulo
+  #'introduza as dimensoes do segundo lado do triangulo: '!!
+  b?
+  #'introduza as dimensoes do terceiro lado do triangulo: '!!
+  c?
+
+  if (a < 1) then 		# face de comprimento nao positivo
+    'As dimensoes dos lados do triangulo devem ser positivas'!!
+  else 
+    if (b < 1) then
+       'As dimensoes dos lados do triangulo devem ser positivas'!!
+    else 
+      if (c < 1) then
+         'As dimensoes dos lados do triangulo devem ser positivas'!!
+      else 
+    	if (a + b <= c) then
+    	   'Nao e um triangulo'!!
+    	else 
+    	  if (a + c <= b) then
+    	     'Nao e um triangulo'!!
+    	  else 
+            if (c + b <= a) then
+    	       'Nao e um triangulo'!!
+    	    else 
+        	    if (a = b) then
+            		if (b = c) then
+            		   'Triangulo equilatero'!!
+            		else 
+            		   'Triangulo isosceles'!!
+            		endif
+                else 
+            		if (b = c) then
+            		   'Triangulo isosceles'!!
+            		else 
+            		   'Triangulo escaleno'!!
+                    endif
+                endif
+            endif
+    	  endif
+        endif
+      endif
+    endif
+  endif
+end

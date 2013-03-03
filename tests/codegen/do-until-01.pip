@@ -1,0 +1,7 @@
+{ out 1 }
+
+start()
+ do
+  1 !!
+ until 1 done
+end

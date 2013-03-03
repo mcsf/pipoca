@@ -1,0 +1,6 @@
+{ out 1 }
+
+  
+start({comment}){comment}
+	1{comment}!!
+end

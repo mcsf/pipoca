@@ -1,0 +1,14 @@
+{ out 5 }
+
+start()
+    init foo := [0]
+
+    while( foo < 5 ) do
+        const a := 5
+        5+5
+        foo := foo + 1
+        continue
+    done
+    
+    foo!!
+end

@@ -1,0 +1,26 @@
+start()
+    init m := [0]
+    init x := [0]
+    m?
+    if (m > 0) then
+      while (x < m) do
+        x!!
+        x := x + 1
+      done
+    endif
+end
+
+{in
+8
+}
+
+{out
+0
+1
+2
+3
+4
+5
+6
+7
+}

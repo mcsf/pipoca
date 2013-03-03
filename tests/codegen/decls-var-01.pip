@@ -1,0 +1,14 @@
+{ out a12.4 }
+  
+  
+start()
+	var string s
+	var i
+	var real r
+	s := 'a'
+	i := 1
+	r := 2.4
+	s!
+	i!
+	r!!
+end

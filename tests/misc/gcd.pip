@@ -1,0 +1,34 @@
+{ in 56 
+49 }
+{ out 7 }
+
+start()	# maior divisor comum entre dois numeros inteiros positivos
+  init a := [0]
+  init b := [0]
+  a?
+  b?
+  if (a <= 0) then
+    'Os valores devem ser positivos'!!
+  else
+    if (b <= 0) then
+      'Os valores devem ser positivos'!!
+    else
+      init d := [1]
+      init m := [0]
+      init i := [2]
+      m := a
+      if (a > b) then
+        m := b
+      endif
+      while (i <= m) do
+        if (a % i = 0) then
+            if (b % i = 0) then
+                d := i
+            endif
+        endif
+        i := i + 1
+      done
+      d!!		# maior divisor comum
+    endif
+  endif
+end

@@ -1,0 +1,8 @@
+{ out 22 }
+  
+  
+start()
+	init i := 1
+	++i!
+	i!!
+end

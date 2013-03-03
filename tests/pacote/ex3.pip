@@ -1,0 +1,12 @@
+{ out 0246810121416182022242628 }
+
+init x := [ 0 ]
+start()
+  while x < 30 do
+    if x % 2 = 0 then
+      x!
+    endif
+    x++
+  done
+  start := 0
+end

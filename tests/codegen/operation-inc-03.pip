@@ -1,0 +1,11 @@
+{ out 1234 }
+  
+init j := [3]
+ 
+start()
+	init i := [1]
+	i++!
+	i!
+	j++!
+	j!!
+end

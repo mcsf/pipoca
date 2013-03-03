@@ -1,0 +1,11 @@
+{ out 2143 }
+  
+init j := [4]
+ 
+start()
+	init i := [2]
+	i--!
+	i!
+	j--!
+	j!!
+end

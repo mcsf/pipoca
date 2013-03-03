@@ -1,0 +1,9 @@
+{ out 1 }
+  
+g()
+	g:= 1
+end
+  
+start()
+	g()!!
+end

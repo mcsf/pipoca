@@ -1,0 +1,9 @@
+{ in 2 }
+{ out 14 }
+
+init x := [ 0 ]
+start()
+  x?
+  x := x + 12
+  x!!
+end

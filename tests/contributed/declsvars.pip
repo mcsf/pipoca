@@ -1,0 +1,98 @@
+
+# not tested
+# const integer arg8 
+# const real arg9
+
+
+var arg1
+var integer arg1
+var integer arg1[1]
+
+extern var string arg2
+extern var string arg2
+
+var real arg3[1]
+var real arg3
+
+init arg4 := 'fgdhfjk'
+init arg5 := [1]
+init arg6 := [1,4,4,5]
+init arg7 := [1.45]
+
+const arg8 := 54
+const arg9 := 11.45
+const arg10 := [11,  45,  3.0, 56]
+const arg11 := [0.1, 0.3, 0.4]
+
+
+funct()
+	4354
+end
+
+funcp()
+
+
+start()
+	'this should compile and etc~~~'!!
+end
+
+
+var string arg4
+var arg5
+var arg6[4]
+var real arg7
+
+
+{
+# these should not be accepted, tho it's really undefined..
+var arg8
+var real arg9
+var real arg10[4]
+var real arg11[3]
+}
+
+###############################
+# theses should not compile!  #
+###############################
+{
+var string arg2
+extern var arg2
+
+extern var arg1
+extern var integer arg1
+extern var integer arg1[1]
+var arg1[]
+var integer arg1[]
+var integer arg1[2]
+
+extern var real arg3[1]
+extern var real arg3
+var real arg3[]
+var arg3
+
+var funcp
+var funct
+
+var arg4
+extern var arg4
+extern var string arg4
+
+var arg5[2]
+var real arg5
+extern var arg5
+
+var arg6[3]
+var arg6
+extern var arg6
+extern var real arg6
+
+var arg7
+var arg9
+
+var arg10[4]
+extern var arg10[4]
+var real arg11[4]
+}
+###############################
+
+

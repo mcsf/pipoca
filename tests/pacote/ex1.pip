@@ -1,0 +1,10 @@
+{ out 0123456789 }
+
+start()
+  var x
+  x := 0
+  while x < 10 do
+    x!
+    x++
+  done
+end

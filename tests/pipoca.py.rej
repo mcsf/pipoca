@@ -1,0 +1,31 @@
+--- pipoca.py
++++ pipoca.py
+@@ -14,7 +14,12 @@
+ assembler = "/usr/bin/yasm"
+ linker = "/usr/bin/ld"
+ 
+-rts = home+"/compiladores/root/usr/lib/"
++rts_dirs = [
++        '/usr/lib/',
++        home + '/compiladores/root/usr/lib/',
++        home + '/ist/com/root/usr/lib/',
++        ]
++
+ lrts = "rts"
+ 
+ showErrors = True
+@@ -110,8 +115,12 @@
+ 		raise Exception("linker '%s' not found or does not exist" % (linker))
+ 	
+ 	# check for the runtime lib
+-	if not os.path.isfile(rts+"lib"+lrts+".a"):
+-		raise Exception("runtime lib '%s' not found or does not exist" % (lrts))
++	for dir in rts_dirs:
++		if os.path.isfile(dir + '/lib' + lrts + '.a'):
++			rts = dir
++			break
++	else:
++		raise LinkException("runtime lib '%s' not found or does not exist" % (lrts))
+ 		
+ 	# link it
+ 	try:

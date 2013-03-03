@@ -1,0 +1,18 @@
+{ in 2 }
+{ out 01
+done}
+
+start()
+  var integer m, x
+  x := 0
+  m?
+  if m > 0 then
+    while x < m do
+       x!
+       x++
+    done
+  else
+    '\nshould not be printed for positive input'!!
+  endif
+  '\ndone'!!
+end
